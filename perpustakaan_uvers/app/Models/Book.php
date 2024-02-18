@@ -26,15 +26,15 @@ class Book extends Model
         $borrowed_stock = $this->borrow()->whereNull('return_date')->count();
         return $this->stock - $borrowed_stock;
     }
-    
+
     public function getDownloadLink()
     {
-        if (!$this->file_path) {
+        if (!$this->book_path) {
             return null;
         }
 
         $temporaryLink = URL::temporarySignedRoute('download.book', now()->addHour(), ['book' => $this->id]);
-
+        
         return $temporaryLink;
     }
 }

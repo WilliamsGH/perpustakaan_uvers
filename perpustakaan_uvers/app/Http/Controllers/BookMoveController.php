@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Book_Move;
 use App\Http\Requests\StoreBook_MoveRequest;
 use App\Http\Requests\UpdateBook_MoveRequest;
+use App\Http\Requests\UpdateRatingRequest;
+use App\Models\BookMove;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Http\JsonResponse;
 
 class BookMoveController extends Controller
 {
@@ -13,74 +17,31 @@ class BookMoveController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+     public function update_rating(UpdateRatingRequest $request)
+     {
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreBook_MoveRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreBook_MoveRequest $request)
-    {
-        //
-    }
+        $move_id = BookMove::where('id', $request['history_id'])->first();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Book_Move  $book_Move
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Book_Move $book_Move)
-    {
-        //
-    }
+        if (!$move_id->return_date){
+            throw new HttpResponseException(response([
+                'error' => [
+                    'message' => 'You have to return the book first.'
+                ]
+            ], 400));
+        }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Book_Move  $book_Move
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Book_Move $book_Move)
-    {
-        //
-    }
+        $move_id->rate = $request['rate'];
+        $move_id->save();
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateBook_MoveRequest  $request
-     * @param  \App\Models\Book_Move  $book_Move
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateBook_MoveRequest $request, Book_Move $book_Move)
-    {
-        //
-    }
+        return new JsonResponse([
+            'data' => [ 
+                'history' => $move_id,
+                'message' => 'Rate has been added' 
+            ],
+            'error' => ''
+        ]);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Book_Move  $book_Move
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Book_Move $book_Move)
-    {
-        //
-    }
+     }
+
 }

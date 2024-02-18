@@ -189,7 +189,7 @@ class WebController extends Controller
         if (@$file['cover_file']) {
             Storage::delete($book_id->cover_path);
             $coverFile = $file['cover_file'];   
-            $book_id->cover_path = $coverFile->storeAs('books/covers', $fileName . "." . $coverFile->getClientOriginalExtension() , 'local');
+            $book_id->cover_path = $coverFile->storeAs('books/covers', $fileName . "." . $coverFile->getClientOriginalExtension() , 'public');
     
             
         }
@@ -197,7 +197,7 @@ class WebController extends Controller
         if (@$file['book_file']) {
             Storage::delete($book_id->book_path);
             $bookFile = $file['book_file'];
-            $book_id->book_path = $bookFile->storeAs('books/files', $fileName . "." . $bookFile->getClientOriginalExtension() , 'local');
+            $book_id->book_path = $bookFile->storeAs('books/files', $fileName . "." . $bookFile->getClientOriginalExtension() , 'public');
         }
 
         $book_id->save();

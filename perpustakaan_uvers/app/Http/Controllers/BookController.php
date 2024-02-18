@@ -46,7 +46,7 @@ class BookController extends Controller
         
         // Files
         $bookFile = $file['book_file'];
-        $book_id->book_path = $bookFile->storeAs('books/files', $fileName . "." . $bookFile->getClientOriginalExtension() , 'local');
+        $book_id->book_path = $bookFile->storeAs('books/files', $fileName . "." . $bookFile->getClientOriginalExtension() , 'public');
         
         $book_id->save();
 
@@ -81,11 +81,11 @@ class BookController extends Controller
 
     public function download(Book $book)
     {
-        if (!$book->file_path) {
+        if (!$book->book_path) {
             abort(404);
         }
 
-        $filePath = storage_path('app/storage/' . $book->file_path);
+        $filePath = storage_path('app/public/' . $book->book_path);
         
         return response()->download($filePath, 'pdffile');
     }

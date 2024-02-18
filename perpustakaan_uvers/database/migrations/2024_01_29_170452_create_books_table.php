@@ -31,6 +31,7 @@ return new class extends Migration
             $table->string('book_path', 200)->nullable();
             $table->boolean('is_publish')->default(true);
             $table->integer('stock')->default(0);
+            $table->integer('stock_left')->default(0);
             $table->timestamps();
 
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('restrict');

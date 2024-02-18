@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Route;
 
@@ -47,4 +48,8 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/delete/{id}', [WebController::class, 'member_destroy']);
     });
 
+});
+
+Route::middleware(['verifyDownloadSignature'])->group(function () {
+    Route::get('/download/book/{book}', [BookController::class, 'download'])->name('download.book');
 });

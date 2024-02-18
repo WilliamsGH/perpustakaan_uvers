@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ApiController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\BookMoveController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -34,7 +36,17 @@ Route::prefix('/user')->group(function () {
 });
 
 
+Route::prefix('/book_move')->group(function () {
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::get('/update_rating', [BookMoveController::class, 'update_rating']);
+    });
+});
+
 Route::prefix('/book')->group(function () {
     Route::get('/get_book_list', [BookController::class, 'get_book_list']);
     Route::get('/get_book_detail', [BookController::class, 'get_book_detail']);
+});
+
+Route::prefix('/category')->group(function () {
+    Route::get('/get_category_list', [CategoryController::class, 'get_category_list']);
 });

@@ -6,12 +6,12 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class BorrowBookRequest extends FormRequest
+class UpdateRatingRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      *
-    * @return bool
+     * @return bool
      */
     public function authorize()
     {
@@ -26,7 +26,8 @@ class BorrowBookRequest extends FormRequest
     public function rules()
     {
         return [
-            'book_id'  =>  ['required', 'exists:books,id'],
+            'history_id'  =>  ['required', 'exists:book_moves,id'],
+            'rate'  =>  ['required', 'integer','between:0,5'],
         ];
     }
 
