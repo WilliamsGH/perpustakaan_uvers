@@ -12,7 +12,7 @@ class AuthController extends Controller
     public function login($email, $password)
     {
         // Attempt to authenticate the user
-        if (Auth::attempt(['email' => $email, 'password' => $password])) {
+        if (Auth::attempt(['username' => $email, 'password' => $password])) {
             $user = Auth::user();
             if ($user->role == 'super_admin' or $user->role == 'admin') {
                 $token = $user->createToken('authToken')->accessToken;

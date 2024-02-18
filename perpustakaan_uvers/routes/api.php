@@ -38,7 +38,7 @@ Route::prefix('/user')->group(function () {
 
 Route::prefix('/book_move')->group(function () {
     Route::middleware('auth:sanctum')->group(function () {
-        Route::get('/update_rating', [BookMoveController::class, 'update_rating']);
+        Route::post('/update_rating', [BookMoveController::class, 'update_rating']);
     });
 });
 

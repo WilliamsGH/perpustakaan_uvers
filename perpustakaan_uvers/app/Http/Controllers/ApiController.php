@@ -24,7 +24,7 @@ class ApiController extends Controller
     {
         $data = $request->validated();
 
-        $user = User::where('email', $data['username'])->first();
+        $user = User::where('username', $data['username'])->first();
         if(!$user || !Hash::check($data['password'], $user->password))
         {
             throw new HttpResponseException(response([

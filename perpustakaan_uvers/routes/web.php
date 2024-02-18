@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\WebController;
+use App\Models\Book;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -52,4 +53,9 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware(['verifyDownloadSignature'])->group(function () {
     Route::get('/download/book/{book}', [BookController::class, 'download'])->name('download.book');
+});
+
+Route::get('/test', function () {
+    $book = Book::first();
+    $book->getRateAttribute;
 });

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('major_id')->nullable();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('username')->unique();
             $table->string('password');
             $table->string('phone', 20)->nullable();
             $table->enum('gender', ['male','female'])->nullable();
