@@ -1,17 +1,10 @@
-.borderRed {
-  border: 1px solid red;
-}
-
-li:nth-child(5) {
+li.sidebar-item:nth-child(5) {
+  width: 100%;
   position: absolute;
-  bottom: 10%;
-  left: 25%;
+  bottom: 7.5vh;
 }
 
-.logout > a {
-  text-decoration: none;
-  color: #686868;
-  font-weight: 600;
+a.sidebar-link.logout {
   border: 1px solid #686868;
   border-radius: 10px;
 }

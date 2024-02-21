@@ -19,6 +19,7 @@
     <title>{{ $title ?? 'Perpustakaan UVERS' }}</title>
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/addedCSS.css') }}" rel="stylesheet" />
     @yield('css')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
@@ -60,8 +61,8 @@
                             <span class="align-middle">Anggota</span>
                         </a>
                     </li>
-                    <li class="sidebar-item logout">
-                        <a class="sidebar-link" href="{{ url('/logout') }}">
+                    <li class="sidebar-item d-flex align-items-center justify-content-center">
+                        <a class="sidebar-link logout" href="{{ url('/logout') }}">
                             <img src="{{Storage::url('img/icons/logout-icon.svg')}}" alt="" />
                             <span class="align-middle">Logout</span>
                         </a>
@@ -79,8 +80,7 @@
                 <div class="navbar-collapse collapse">
                     <ul class="navbar-nav navbar-align">
                         <li class="nav-item dropdown">
-                            <a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown"
-                                data-bs-toggle="dropdown">
+                            <a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-bs-toggle="dropdown">
                                 <div class="position-relative">
                                     <i class="align-middle" data-feather="bell"></i>
                                     {{-- <span class="indicator">4</span> --}}
@@ -151,8 +151,8 @@
                         </li> --}}
                         <li>
                             <div class="nav-link d-none d-sm-inline-block">
-                                <img src="{{ Storage::url('img/avatars/default.png')}}" class="avatar img-fluid rounded-pill me-1"
-                                    alt="Your Name" />
+                                <img src="{{ Storage::url('img/avatars/default.png')}}"
+                                    class="avatar img-fluid rounded-pill me-1" alt="Your Name" />
                                 <span class="text-dark">{{$user->name}}</span>
                             </div>
                         </li>
@@ -165,7 +165,7 @@
             <!-- End Content -->
         </div>
     </div>
-    
+
 
     <!-- Script -->
     <script src="{{ asset('js/app.js') }}"></script>
