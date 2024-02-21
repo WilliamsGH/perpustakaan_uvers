@@ -36,17 +36,6 @@ input[type='text']:focus {
   width: 75%;
 }
 
-.biblio-btn-cari {
-  background-color: #387df5;
-  color: white;
-  border: 1px solid transparent;
-  font-size: 0.875rem;
-  font-weight: 600;
-  border-radius: 0 0.5rem 0.5rem 0;
-  width: 15%;
-  min-width: 55px;
-}
-
 .biblio-tambah-buku-box {
   background-color: #00b290;
   color: white;
@@ -181,11 +170,6 @@ form.biblio-edit textarea {
     width: 65%;
   }
 
-  .biblio-btn-cari {
-    width: 20%;
-    max-width: 60px !important;
-  }
-
   .biblio-form-search {
     width: 60% !important;
   }
@@ -222,10 +206,6 @@ form.biblio-edit textarea {
 
   .biblio-form-pencarian {
     width: 75%;
-  }
-
-  .biblio-btn-cari {
-    width: 15%;
   }
 
   .biblio-table tr th {
@@ -280,11 +260,6 @@ form.biblio-edit textarea {
 
   .biblio-form-pencarian {
     width: 75%;
-  }
-
-  .biblio-btn-cari {
-    width: 15%;
-    max-width: 56px !important;
   }
 
   .biblio-table tr th {

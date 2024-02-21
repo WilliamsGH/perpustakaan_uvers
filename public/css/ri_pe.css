@@ -37,17 +37,6 @@ input[type='text']:focus {
   width: 75%;
 }
 
-.ri-pe-btn-cari {
-  background-color: #387df5;
-  color: white;
-  border: 1px solid transparent;
-  font-size: 0.875rem;
-  font-weight: 600;
-  border-radius: 0 0.5rem 0.5rem 0;
-  width: 15%;
-  min-width: 55px;
-}
-
 .ri-pe-form-date {
   width: fit-content;
 }
@@ -79,11 +68,6 @@ input[type='text']:focus {
 
   .ri-pe-form-pencarian {
     width: 65%;
-  }
-
-  .ri-pe-btn-cari {
-    width: 20%;
-    max-width: 60px !important;
   }
 
   .ri-pe-form-search {
@@ -120,10 +104,6 @@ input[type='text']:focus {
     width: 75%;
   }
 
-  .ri-pe-btn-cari {
-    width: 15%;
-  }
-
   .ri-pe-table tr th {
     font-size: 1.5vw;
   }
@@ -157,11 +137,6 @@ input[type='text']:focus {
 
   .ri-pe-form-pencarian {
     width: 75%;
-  }
-
-  .ri-pe-btn-cari {
-    width: 15%;
-    max-width: 56px !important;
   }
 
   .ri-pe-table tr th {

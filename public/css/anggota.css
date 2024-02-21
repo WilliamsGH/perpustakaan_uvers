@@ -36,17 +36,6 @@ input[type='text']:focus {
   width: 75%;
 }
 
-.anggota-btn-cari {
-  background-color: #387df5;
-  color: white;
-  border: 1px solid transparent;
-  font-size: 0.875rem;
-  font-weight: 600;
-  border-radius: 0 0.5rem 0.5rem 0;
-  width: 15%;
-  min-width: 55px;
-}
-
 .anggota-tambah-anggota-box {
   background-color: #00b290;
   color: white;
@@ -170,11 +159,6 @@ h4.anggota-detail {
     width: 65%;
   }
 
-  .anggota-btn-cari {
-    width: 20%;
-    max-width: 60px !important;
-  }
-
   .anggota-form-search {
     width: 60% !important;
   }
@@ -216,10 +200,6 @@ h4.anggota-detail {
 
   .anggota-form-pencarian {
     width: 75%;
-  }
-
-  .anggota-btn-cari {
-    width: 15%;
   }
 
   .anggota-table tr th {
@@ -275,11 +255,6 @@ h4.anggota-detail {
 
   .anggota-form-pencarian {
     width: 75%;
-  }
-
-  .anggota-btn-cari {
-    width: 15%;
-    max-width: 56px !important;
   }
 
   .anggota-table tr th {
