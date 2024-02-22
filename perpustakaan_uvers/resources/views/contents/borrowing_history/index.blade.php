@@ -20,10 +20,13 @@
             <input type="text" class="ri-pe-form-pencarian" placeholder="Pencarian data" />
           </form>
 
-          <form action="" class="ri-pe-form-date ms-md-auto mt-2 mt-md-0">
+          <form action="" class="ms-md-auto mt-2 mt-md-0 d-flex gap-1">
             <input type="date" placeholder="Start Date" class="ri-pe-date text-center h-100" />
             <span>-</span>
             <input type="date" placeholder="End Date" class="ri-pe-date text-center h-100" />
+            <button class="btn btn-primary ri-pe-btn-filter p-0" type="submit">
+              Filter
+            </button>
           </form>
         </div>
 
