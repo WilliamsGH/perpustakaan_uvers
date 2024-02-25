@@ -37,15 +37,16 @@ input[type='text']:focus {
   width: 75%;
 }
 
-.ri-pe-form-date {
-  width: fit-content;
-}
-
 .ri-pe-date {
   min-width: 90px;
   max-width: 9vw;
   min-height: 31.92px;
   max-height: 31.92px;
+}
+
+.ri-pe-btn-filter {
+  min-width: 70px !important;
+  height: 31.92px !important;
 }
 
 .ri-pe-table tr th {
