@@ -20,7 +20,7 @@
           <div class="row mt-2">
             <div class="col-md-6 mb-md-2">
               <label for="">ID Anggota</label>
-              <input type="text" class="form-control" name="email" required />
+              <input type="text" class="form-control" name="username" required />
               <label for="">No.Telepon</label>
               <input type="tel" class="form-control" name="phone" required />
               <label for="">Password</label>
@@ -34,9 +34,9 @@
                 </div>
               </div>
               <label for="">Email</label>
-              <input type="email" class="form-control" name="" required />
+              <input type="email" class="form-control" name="email" required />
               <label for="">Alamat Rumah</label>
-              <input type="text" class="form-control" name="" required />
+              <input type="text" class="form-control" name="address" required />
               <label for="">Jenis Kelamin</label>
               <div class="form-control">
                 <input class="form-check-input" type="radio" name="gender" value="female" id="flexRadioDefault1"
@@ -64,12 +64,16 @@
                 <option value="{{ $institution_id->id }}">{{ $institution_id->name }}</option>
                 @endforeach
               </select>
-              <label for="">Fakultas</label>
-              <input type="text" class="form-control" name="" required />
+              {{-- <label for="">Fakultas</label>
+              <input type="text" class="form-control" name="" required /> --}}
               <label for="">Jurusan</label>
-              <input type="text" class="form-control" name="" required />
+              <select name="major_id" class="form-select" required>
+                @foreach ($major_ids as $institution_id)
+                <option value="{{ $institution_id->id }}">{{ $institution_id->name }}</option>
+                @endforeach
+              </select>
               <label for="">Angkatan</label>
-              <input type="text" class="form-control" name="" required />
+              <input type="text" class="form-control" name="generation" required />
             </div>
           </div>
 

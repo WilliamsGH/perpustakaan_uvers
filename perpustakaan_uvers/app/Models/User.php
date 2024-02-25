@@ -22,6 +22,7 @@ class User extends Authenticatable
         'institution_id',
         'name',
         'email',
+        'username',
         'password',
         'gender',
         'active',
@@ -29,6 +30,7 @@ class User extends Authenticatable
         'phone',
         'generation',
         'join_date',
+        'address',
     ];
 
     /**

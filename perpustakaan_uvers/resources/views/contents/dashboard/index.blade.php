@@ -13,7 +13,7 @@
                 <div class="col-6 order-2 ps-1 pe-0">
                     <div class="dashboard-menu-box-2 d-flex justify-content-between py-2 px-2 px-sm-3">
                         <div>
-                            <span class="fw-bold dashboard-stat-count">64</span>
+                            <span class="fw-bold dashboard-stat-count">{{ $dashboard_data['total_book_borrowed'] }}</span>
                             <br />
                             <span class="dashboard-stat-text">Buku Dipinjam</span>
                         </div>
@@ -27,7 +27,7 @@
                 <div class="col-6 order-1 pe-1 ps-0">
                     <div class="dashboard-menu-box-1 d-flex justify-content-between py-2 px-2 px-sm-3">
                         <div>
-                            <span class="fw-bold dashboard-stat-count">54</span>
+                            <span class="fw-bold dashboard-stat-count">{{ $dashboard_data['total_visitors'] }}</span>
                             <br />
                             <span class="dashboard-stat-text">Pengunjung</span>
                         </div>
@@ -60,74 +60,21 @@
 
 @section('js')
     <script>
-        let PengunjungAkt = 50
-        let PengunjungMgm = 95
-        let PengunjungSenTar = 30
-        let PengunjungSenMus = 23
-        let PengunjungPBM = 78
-        let PengunjungSI = 60
-        let PengunjungTIF = 53
-        let PengunjungTPL = 48
-        let PengunjungTI = 20
-        let PengunjungTL = 30
-
-        let PeminjamAkt = 70
-        let PeminjamMgm = 40
-        let PeminjamSenTar = 38
-        let PeminjamSenMus = 62
-        let PeminjamPBM = 89
-        let PeminjamSI = 33
-        let PeminjamTIF = 29
-        let PeminjamTPL = 47
-        let PeminjamTI = 19
-        let PeminjamTL = 4
+        var chart_data = {!! json_encode($dashboard_data['chart_data']) !!};
 
         new Chart(document.getElementById('barchart'), {
             type: 'bar',
             data: {
-                labels: [
-                    'Akuntansi',
-                    'Management',
-                    'Seni Tari',
-                    'Seni Musik',
-                    'PBM',
-                    'SI',
-                    'TIF',
-                    'TPL',
-                    'TI',
-                    'TL',
-                ],
+                labels: chart_data['labels'],
                 datasets: [{
                         label: 'Pengunjung',
                         backgroundColor: '#1FBADC',
-                        data: [
-                            PengunjungAkt,
-                            PengunjungMgm,
-                            PengunjungSenTar,
-                            PengunjungSenMus,
-                            PengunjungPBM,
-                            PengunjungSI,
-                            PengunjungTIF,
-                            PengunjungTPL,
-                            PengunjungTI,
-                            PengunjungTL,
-                        ],
+                        data: chart_data['total_visitors'],
                     },
                     {
                         label: 'Buku Yang Dipinjam',
                         backgroundColor: '#F5AD41',
-                        data: [
-                            PeminjamAkt,
-                            PeminjamMgm,
-                            PeminjamSenTar,
-                            PeminjamSenMus,
-                            PeminjamPBM,
-                            PeminjamSI,
-                            PeminjamTIF,
-                            PeminjamTPL,
-                            PeminjamTI,
-                            PeminjamTL,
-                        ],
+                        data: chart_data['total_book_borowed'],
                     },
                 ],
             },

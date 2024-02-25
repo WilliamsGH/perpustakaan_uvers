@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LoginHistory;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -16,6 +17,9 @@ class AuthController extends Controller
             $user = Auth::user();
             if ($user->role == 'super_admin' or $user->role == 'admin') {
                 $token = $user->createToken('authToken')->accessToken;
+                // LoginHistory::create([
+                //     'user_id' => $user->id,
+                // ]);
                 return ['error' => '','data' => ['token' => $token]];
             }
 

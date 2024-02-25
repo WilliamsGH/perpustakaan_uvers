@@ -10,6 +10,7 @@ use App\Http\Requests\ReturnBookRequest;
 use App\Http\Requests\UserLoginRequest;
 use App\Models\Book;
 use App\Models\BookMove;
+use App\Models\LoginHistory;
 use App\Models\User;
 use App\Models\WishList;
 use Illuminate\Http\Exceptions\HttpResponseException;
@@ -37,6 +38,10 @@ class ApiController extends Controller
         $accessToken = $user->createToken('AuthToken', ['expires_in' => 60 * 60])->plainTextToken;
         $refreshToken = $user->createToken('AuthTokenRefresh')->plainTextToken;
         
+        LoginHistory::create([
+            'user_id' => $user->id,
+        ]);
+
         return new JsonResponse([
             'data' => [
                 'name' => $user->name,

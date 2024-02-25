@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         // Master Data
         $this->call(InstitutionSeeder::class);
         $this->call(LanguageSeeder::class);
+        $this->call(FacultySeeder::class);
         $this->call(MajorSeeder::class);
         $this->call(CategorySeeder::class);
 

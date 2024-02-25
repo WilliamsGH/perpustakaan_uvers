@@ -26,6 +26,7 @@ return new class extends Migration
             $table->boolean('active')->default(true);
             $table->integer('generation')->default(date('Y'))->nullable();
             $table->enum('role', ['super_admin','admin','user'])->default('user');
+            $table->text('address')->nullable();
             $table->dateTime('join_date')->default(now());
 
             $table->timestamp('email_verified_at')->nullable();

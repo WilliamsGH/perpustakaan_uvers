@@ -40,7 +40,7 @@
                             <div class="login-icons-box form-control text-center px-0">
                                 <img src="{{ Storage::url('img/icons/person-fill.svg') }}" alt="" class="d-flex login-icons" />
                             </div>
-                            <input type="text" class="form-control" name="email" placeholder="Username" required/>
+                            <input type="text" class="form-control" name="username" placeholder="Username" required/>
                         </div>
                         <div class="d-flex mt-3">
                             <div class="login-icons-box form-control text-center px-0">

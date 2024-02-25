@@ -13,15 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('majors', function (Blueprint $table) {
+        Schema::create('faculties', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('faculty_id')->nullable();
-            $table->string('name');
-            $table->char('alias', 5);
-            $table->boolean('active')->default(true);
+            $table->string('name', 100);
             $table->timestamps();
-
-            $table->foreign('faculty_id')->references('id')->on('faculties')->onDelete('restrict');
         });
     }
 
@@ -32,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('majors');
+        Schema::dropIfExists('faculties');
     }
 };

@@ -13,15 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('majors', function (Blueprint $table) {
+        Schema::create('login_histories', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('faculty_id')->nullable();
-            $table->string('name');
-            $table->char('alias', 5);
-            $table->boolean('active')->default(true);
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
-            $table->foreign('faculty_id')->references('id')->on('faculties')->onDelete('restrict');
+            // Define Foreign Key
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('majors');
+        Schema::dropIfExists('login_histories');
     }
 };

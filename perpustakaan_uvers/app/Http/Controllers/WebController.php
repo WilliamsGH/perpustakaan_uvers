@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Language;
 use App\Models\User;
 use App\Models\Institution;
+use App\Models\Major;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -35,11 +36,11 @@ class WebController extends Controller
         // Validation (you may need more validation rules)
         
         $request->validate([
-            'email' => 'required|string',
+            'username' => 'required|string',
             'password' => 'required|string',
         ]);
 
-        $response = $this->authController->login($request->email, $request->password);
+        $response = $this->authController->login($request->username, $request->password);
 
         if ($response['error'] == '') {
             return redirect()->intended('/');
@@ -67,7 +68,32 @@ class WebController extends Controller
 
     public function dashboard()
     {
-        return view('contents.dashboard.index', ['title' => 'Dashboard', 'user' => Auth::user()]);
+
+        $major_ids = Major::all();
+        
+        $datas = [
+            'total_visitors' => 0,
+            'total_book_borrowed' => 0,
+            'chart_data' => [
+                'labels' => [],
+                'total_visitors' => [],
+                'total_book_borrowed' => [],
+            ],
+        ];
+
+        foreach ($major_ids as $major_id) {
+            $total_book_borrowed = $major_id->total_book_borrowed();
+            $total_visitors = $major_id->total_visitors();
+
+            array_push($datas['chart_data']['labels'], $major_id->alias !== "" ? $major_id->alias : $major_id->name);
+            array_push($datas['chart_data']['total_visitors'], $total_visitors);
+            array_push($datas['chart_data']['total_book_borrowed'], $total_book_borrowed);
+            
+            $datas['total_book_borrowed'] +=  $total_book_borrowed;
+            $datas['total_visitors'] += $total_visitors;
+        }
+
+        return view('contents.dashboard.index', ['title' => 'Dashboard', 'user' => Auth::user(), 'dashboard_data' => $datas]);
     }
 
     public function bibliography()
@@ -243,6 +269,7 @@ class WebController extends Controller
     {        
         $data = [
             'institution_ids' => Institution::all(),
+            'major_ids' => Major::all(),
         ];
 
         return view('contents.member.create',  ['title' => 'Anggota', 'user' => Auth::user()] + $data );
@@ -253,6 +280,7 @@ class WebController extends Controller
 
         $data = $request->validate([
             'institution_id' => 'required|integer',
+            'username' => 'required',
             'email' => 'required',
             'phone' => 'required',
             'password' => 'required',
@@ -260,13 +288,17 @@ class WebController extends Controller
             'join_date' => 'required',
             'gender' => 'required',
             'active' => '',
+            'address' => '',
+            'major_id' => 'required',
         ]);
 
-        $data['password'] = Hash::make($data['password']);
+        $data['active'] =(@$data['active'] == 'on') ? 0 : 1 ;
 
+        $data['password'] = Hash::make($data['password']);
+        
         $user_id = User::create($data);
 
-        return redirect()->intended("/member")->with('success', 'Book deleted successfully');
+        return redirect()->intended("/member")->with('success', 'Book created successfully');
     }
 
     public function member_edit($id)
@@ -276,6 +308,7 @@ class WebController extends Controller
         if (@$user_id) {
             $data = [
                 'institution_ids' => Institution::all(),
+                'major_ids' => Major::all(),
                 'user_id' => $user_id,
             ];
             return view('contents.member.edit',  ['title' => 'Anggota', 'user' => Auth::user()] + $data);
@@ -290,15 +323,18 @@ class WebController extends Controller
 
         $data = $request->validate([
             'institution_id' => 'required|integer',
+            'username' => 'required',
             'email' => 'required',
             'phone' => 'required',
             'name' => 'required',
             'join_date' => 'required',
             'gender' => 'required',
             'active' => '',
+            'address' => '',
+            'major_id' => 'required',
         ]);
 
-        $data['active'] =(@$data['active'] == 'on') ? 1 : 0 ;
+        $data['active'] =(@$data['active'] == 'on') ? 0 : 1 ;
 
         if (@$request->password) {
             $data['password'] = Hash::make($request->password);
@@ -307,7 +343,8 @@ class WebController extends Controller
         $user_id->update($data);
         $user_id->save();
 
-        return redirect()->intended("/member/edit/$id");
+        // return redirect()->intended("/member/edit/$id");
+        return redirect()->intended("/member")->with('success', 'Book updated successfully');
     }
 
     public function member_destroy($id)

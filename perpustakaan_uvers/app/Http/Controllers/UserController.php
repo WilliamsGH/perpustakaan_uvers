@@ -26,7 +26,7 @@ class UserController extends Controller
             'data' => [
                 'name' => $user->name,
                 'email' => $user->email,
-                'username' => $user->email,
+                'username' => $user->username,
                 'major' => $user->major->name,
                 'generation' => $user->generation,
             ],
