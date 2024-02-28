@@ -85,11 +85,11 @@
               <a class="nav-icon dropdown-toggle" href="#" id="alertsDropdown" data-bs-toggle="dropdown">
                 <div class="position-relative">
                   <i class="align-middle" data-feather="bell"></i>
-                  {{-- <span class="indicator">4</span> --}}
+                  <span class="indicator">4</span>
                 </div>
               </a>
-              {{-- <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="alertsDropdown">
-                <div class="dropdown-menu-header">4 New Notifications</div>
+              <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="alertsDropdown">
+                {{-- <div class="dropdown-menu-header">4 New Notifications</div> --}}
                 <div class="list-group">
                   <a href="#" class="list-group-item">
                     <div class="row g-0 align-items-center">
@@ -97,59 +97,69 @@
                         <i class="text-danger" data-feather="alert-circle"></i>
                       </div>
                       <div class="col-10">
-                        <div class="text-dark">Update completed</div>
-                        <div class="text-muted small mt-1">
-                          Restart server 12 to complete the update.
+                        <div class="text-dark">Sales Order</div>
+                        <div class="d-flex justify-content-between">
+                          <span class="text-muted small mt-1">
+                            3 Late
+                          </span>
+                          <span class="text-muted small mt-1">
+                            0 Today
+                          </span>
+                          <span class="text-muted small mt-1">
+                            0 Future
+                          </span>
                         </div>
-                        <div class="text-muted small mt-1">30m ago</div>
                       </div>
                     </div>
                   </a>
                   <a href="#" class="list-group-item">
                     <div class="row g-0 align-items-center">
                       <div class="col-2">
-                        <i class="text-warning" data-feather="bell"></i>
+                        <i class="text-danger" data-feather="alert-circle"></i>
                       </div>
                       <div class="col-10">
-                        <div class="text-dark">Lorem ipsum</div>
-                        <div class="text-muted small mt-1">
-                          Aliquam ex eros, imperdiet vulputate hendrerit et.
+                        <div class="text-dark">Transfer</div>
+                        <div class="d-flex justify-content-between">
+                          <span class="text-muted small mt-1">
+                            3 Late
+                          </span>
+                          <span class="text-muted small mt-1">
+                            0 Today
+                          </span>
+                          <span class="text-muted small mt-1">
+                            0 Future
+                          </span>
                         </div>
-                        <div class="text-muted small mt-1">2h ago</div>
                       </div>
                     </div>
                   </a>
                   <a href="#" class="list-group-item">
                     <div class="row g-0 align-items-center">
                       <div class="col-2">
-                        <i class="text-primary" data-feather="home"></i>
+                        <i class="text-danger" data-feather="alert-circle"></i>
                       </div>
                       <div class="col-10">
-                        <div class="text-dark">Login from 192.186.1.8</div>
-                        <div class="text-muted small mt-1">5h ago</div>
-                      </div>
-                    </div>
-                  </a>
-                  <a href="#" class="list-group-item">
-                    <div class="row g-0 align-items-center">
-                      <div class="col-2">
-                        <i class="text-success" data-feather="user-plus"></i>
-                      </div>
-                      <div class="col-10">
-                        <div class="text-dark">New connection</div>
-                        <div class="text-muted small mt-1">
-                          Christina accepted your request.
+                        <div class="text-dark">Point Of Sale Session</div>
+                        <div class="d-flex justify-content-between">
+                          <span class="text-muted small mt-1">
+                            3 Late
+                          </span>
+                          <span class="text-muted small mt-1">
+                            0 Today
+                          </span>
+                          <span class="text-muted small mt-1">
+                            0 Future
+                          </span>
                         </div>
-                        <div class="text-muted small mt-1">14h ago</div>
                       </div>
                     </div>
                   </a>
                 </div>
-                <div class="dropdown-menu-footer">
+                {{-- <div class="dropdown-menu-footer">
                   <a href="#" class="text-muted">Show all notifications</a>
-                </div>
+                </div> --}}
               </div>
-            </li> --}}
+            </li>
             <li>
               <div class="nav-link d-none d-sm-inline-block">
                 <img src="{{ Storage::url('img/avatars/default.png')}}" class="avatar img-fluid rounded-pill me-1"
